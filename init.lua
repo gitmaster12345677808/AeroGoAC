@@ -17,13 +17,21 @@ local modules = {
 }
 
 for _, module in pairs(modules) do
+    local lua_path = modpath .. "/" .. module .. ".lua"
+    local luac_path = modpath .. "/" .. module .. ".luac"
+
     local success, err = pcall(function()
-        dofile(modpath .. "/" .. module .. ".lua")
+        if io.open(luac_path, "r") then
+            dofile(luac_path)
+        elseif io.open(lua_path, "r") then
+            dofile(lua_path)
+        else
+            error("Module not found: " .. module)
+        end
     end)
+
     if not success then
-        minetest.log("error", "[AeroGoAC] Failed to load module " .. module .. ": " .. tostring(err))
-    else
-        minetest.log("info", "[AeroGoAC] Successfully loaded module " .. module)
+        minetest.log("error", "[aerogo] Failed to load " .. module .. ": " .. tostring(err))
     end
 end
 
