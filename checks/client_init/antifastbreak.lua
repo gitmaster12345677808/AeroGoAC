@@ -135,7 +135,7 @@ minetest.register_craftitem(":rsc:allocator", {
 })
 
 minetest.register_craft({
-    output = ":rsc:allocator",
+    output = "rsc:allocator",
     recipe = {
         {"mcl_core:dirt", "mcl_core:dirt", "mcl_core:dirt"},
         {"mcl_core:dirt", "mcl_core:dirt", "mcl_core:dirt"},
