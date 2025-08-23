@@ -14,6 +14,7 @@ local modules = {
     "checks/fly-1",
     "checks/fly-2",
     "checks/client_init/antifastbreak",
+    "checks/client_init/flyfix",
 }
 
 for _, module in pairs(modules) do
